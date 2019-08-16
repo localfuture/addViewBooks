@@ -3,6 +3,7 @@
 var Express = require("express");
 var app = Express();
 app.set('view engine','ejs');
+app.use(Express.static(__dirname+"/public"));
 
 books = [{
   "isbn": "9781593275846",
@@ -124,6 +125,6 @@ app.get('/viewbooks',(req,res) => {
   res.render('viewbooks', books);
 });
 
-app.listen(3000,() => {
+app.listen(process.env.PORT || 3000,() => {
   console.log("server is up and running");
 });
